@@ -8,15 +8,19 @@ import { Quote } from "./Quote";
 
 function App() {
     const [colorIndex, setColorIndex] = useState(0);
-    const [colorTheme, setColorTheme] = useState(colors[colorIndex]);
 
-    useEffect(() => {
-        setColorTheme(colors[colorIndex % colors.length]);
-    }, [colorIndex]);
+    function handleColorRequestChange() {
+        setColorIndex((colorIndex + 1) % colors.length);
+    }
+
+    const colorTheme = colors[colorIndex];
 
     return (
         <div className="App" style={{ backgroundColor: colorTheme }}>
-            <Quote colorTheme={colorTheme} />
+            <Quote
+                colorTheme={colorTheme}
+                onColorRequestChange={handleColorRequestChange}
+            />
         </div>
     );
 }

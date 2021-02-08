@@ -81,8 +81,14 @@ code {
 }
 
 .button {
-    background-color: var(--theme);
+    /* background-color: var(--theme); */
     border-radius: 8px;
+    border-style: none;
+    outline: none;
     color: var(--background-color);
     padding: var(--padding);
+}
+
+.button:hover {
+    opacity: 0.7;
 }

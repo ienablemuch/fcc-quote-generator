@@ -1,8 +1,9 @@
 interface IQuoteProps {
     colorTheme: string;
+    onColorRequestChange(): void;
 }
 
-export function Quote({ colorTheme }: IQuoteProps) {
+export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
     return (
         <div className="quote">
             <div className="message" style={{ color: colorTheme }}>
@@ -12,12 +13,19 @@ export function Quote({ colorTheme }: IQuoteProps) {
                 Author here
             </div>
             <div className="buttons">
-                <div className="button" style={{ backgroundColor: colorTheme }}>
+                <button
+                    className="button"
+                    style={{ backgroundColor: colorTheme }}
+                >
                     Twitter
-                </div>
-                <div className="button" style={{ backgroundColor: colorTheme }}>
+                </button>
+                <button
+                    className="button"
+                    style={{ backgroundColor: colorTheme }}
+                    onClick={onColorRequestChange}
+                >
                     New Quote
-                </div>
+                </button>
             </div>
         </div>
     );
