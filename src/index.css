@@ -42,6 +42,8 @@ code {
     align-items: center;
 
     background-color: var(--theme);
+
+    transition: background-color 2s ease;
 }
 
 .quote {
@@ -49,6 +51,8 @@ code {
     background-color: var(--background-color);
 
     border-radius: 8px;
+
+    transition: opacity 1s linear;
 }
 
 .message {
@@ -56,6 +60,12 @@ code {
     text-align: center;
     background-color: var(--background-color);
     color: var(--theme);
+
+    transition: opacity 1s linear;
+}
+
+.message::before {
+    content: open-quote;
 }
 
 .author {
@@ -64,14 +74,12 @@ code {
     justify-content: flex-end;
     background-color: var(--background-color);
     color: var(--theme);
+
+    transition: opacity 1s linear;
 }
 
 .author::before {
     content: "-- ";
-}
-
-.message::before {
-    content: open-quote;
 }
 
 .buttons {
@@ -87,6 +95,8 @@ code {
     outline: none;
     color: var(--background-color);
     padding: var(--padding);
+
+    transition: background-color 2s ease;
 }
 
 .button:hover {
