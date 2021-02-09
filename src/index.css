@@ -3,6 +3,7 @@
     --margin: 20px;
     --theme: dodgerblue;
     --background-color: white;
+    --transition-delay: 4s;
 }
 
 html {
@@ -43,7 +44,7 @@ code {
 
     background-color: var(--theme);
 
-    transition: background-color 2s ease;
+    transition: background-color var(--transition-delay) ease;
 }
 
 .quote {
@@ -52,7 +53,7 @@ code {
 
     border-radius: 8px;
 
-    transition: opacity 1s linear;
+    /* transition: opacity calc(var(--transition-delay) / 2) linear; */
 }
 
 .message {
@@ -61,7 +62,7 @@ code {
     background-color: var(--background-color);
     color: var(--theme);
 
-    transition: opacity 1s linear;
+    transition: opacity calc(var(--transition-delay) / 2) linear;
 }
 
 .message::before {
@@ -75,7 +76,7 @@ code {
     background-color: var(--background-color);
     color: var(--theme);
 
-    transition: opacity 1s linear;
+    transition: opacity calc(var(--transition-delay) / 2) linear;
 }
 
 .author::before {
@@ -94,9 +95,9 @@ code {
     border-style: none;
     outline: none;
     color: var(--background-color);
-    padding: var(--padding);
+    padding: 8px;
 
-    transition: background-color 2s ease;
+    transition: background-color var(--transition-delay) ease;
 }
 
 .button:hover {

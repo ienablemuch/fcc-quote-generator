@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 
+import usePrevious from "@react-hook/previous";
+
 interface IQuoteProps {
     colorTheme: string;
     onColorRequestChange(): void;
@@ -9,6 +11,8 @@ interface IQuote {
     quote: string;
     author: string;
 }
+
+let n = 0;
 
 export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
     const messageRef = useRef(null);
@@ -22,6 +26,11 @@ export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
         quote: "",
         author: "",
     });
+
+    console.log(JSON.stringify(n));
+    ++n;
+
+    const prevColorTheme = usePrevious(colorTheme);
 
     useEffect(() => {
         async function fetchData() {
@@ -58,6 +67,7 @@ export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
             handleOpacityTransitionEnd
         );
 
+        onColorRequestChange();
         messageElement.style.opacity = 0;
         authorElement.style.opacity = 0;
 
@@ -68,7 +78,7 @@ export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
             );
 
             randomizeQuote();
-            onColorRequestChange();
+
             messageElement.style.opacity = 1;
             authorElement.style.opacity = 1;
         }
@@ -76,27 +86,29 @@ export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
 
     return (
         <div className="quote">
+            {prevColorTheme} - {colorTheme}
             <div
                 className="message"
-                style={{ color: colorTheme }}
+                style={{ color: prevColorTheme }}
                 ref={messageRef}
             >
                 {randomQuote.quote}
             </div>
             <div
                 className="author"
-                style={{ color: colorTheme }}
+                style={{ color: prevColorTheme }}
                 ref={authorRef}
             >
                 {randomQuote.author}
             </div>
             <div className="buttons">
-                <button
+                <a
+                    href="https://twitter.com/ienablemuch"
                     className="button"
                     style={{ backgroundColor: colorTheme }}
                 >
-                    Twitter
-                </button>
+                    <i className="fa fa-twitter"></i>
+                </a>
                 <button
                     className="button"
                     style={{ backgroundColor: colorTheme }}
