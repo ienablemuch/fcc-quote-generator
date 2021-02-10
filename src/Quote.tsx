@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-import usePrevious from "@react-hook/previous";
+import { usePrevious } from "./hooks";
 
 interface IQuoteProps {
     colorTheme: string;
@@ -77,6 +77,7 @@ export function Quote({ colorTheme, onColorRequestChange }: IQuoteProps) {
                 handleOpacityTransitionEnd
             );
 
+            // this triggers re-render
             randomizeQuote();
 
             messageElement.style.opacity = 1;
